@@ -22,7 +22,7 @@ public class InventoryEntity
     @Min(value=0, message ="Quantity can not be null" )
     private int availableQuantity;
     private LocalDateTime lastUpdated;
-
+//mapping
     @OneToOne
     @JoinColumn(name = "product_id",nullable = false,unique = true)
     private ProductEntity productEntity;
