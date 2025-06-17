@@ -4,7 +4,10 @@ package com.example.Product.Inventory.Management.Entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.aspectj.bridge.Message;
 
 import java.time.LocalDateTime;
 
@@ -19,16 +22,20 @@ public class ProductEntity
         @Id
         private long productID;
 
-        @NotBlank
+        @NotBlank(message = "PRODUCT NAME MUST NOT BE BLANK")
+        @Size(min=4,message = "Description must not be blank")
         private String productName;
+
         private String productDescr;
-       // @Min(0)
+
+        @Min(value=0,message = "price must be positive")
+        @Positive(message = "Price must not be zero")
         private double price;
 
-        //@NotBlank
+        @NotBlank(message = "Category must not be blank")
         private String category;
 
-       // @NotBlank
+       @NotBlank(message = "Unit must not be blank")
         private String unit;
 
 

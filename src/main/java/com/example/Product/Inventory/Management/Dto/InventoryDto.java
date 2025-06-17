@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class InventoryDto
 {
     private Long Id;
-   // @Min(0)
+    @Min(0)
     private int availableQuantity;
     private LocalDateTime lastUpdated;
 

@@ -2,6 +2,7 @@ package com.example.Product.Inventory.Management.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,12 @@ public class InventoryEntity
 {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull(message = "Product ID is required")
     private Long Id;
+
+    @NotNull(message = "Quantity is required")
+    @Min(value=0, message ="Quantity can not be null" )
     private int availableQuantity;
     private LocalDateTime lastUpdated;
 
